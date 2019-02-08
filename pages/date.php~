@@ -1,0 +1,5 @@
+<?php
+
+echo mktime();
+echo date('Y-m-d H:i:s', mktime());
+?>

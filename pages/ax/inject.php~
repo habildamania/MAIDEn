@@ -1,0 +1,9 @@
+<?php
+$name = $_GET['name'];
+$que = "python3 injector_client.py $name";
+echo $array;
+echo $que;
+$data = exec($que);
+echo "$data";
+
+?>

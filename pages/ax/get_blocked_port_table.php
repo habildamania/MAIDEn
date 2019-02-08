@@ -1,0 +1,36 @@
+<?php
+include("config.php");
+    //echo"In";
+echo"                            <table width='100%' class='table table-striped table-bordered table-hover' id='dataTables-example'>
+                                <thead>
+                                    <tr>
+                                        <th>Source ip</th>
+                                        <th>Destination port</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+";
+    $que = "SELECT * FROM `block_port`";   
+ $query=$mysqli_conn->query($que);
+$no=1;
+while($rows=$query->fetch_assoc())
+{
+$id = $rows['id'];
+$s_ip = $rows['dest_ip'];
+$d_p = $rows['dest_port'];
+
+echo"                                    <tr class='odd gradeX'>
+                                        <td>$s_ip</td>
+                                        <td>$d_p</td>
+                                        <td><button type = 'button' onclick = 'unblock_port($id);'> Unblock Port </button></td>
+
+                                    </tr>
+";
+
+}
+echo"</tbody>
+</table>
+";
+
+?>
