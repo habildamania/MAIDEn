@@ -1,0 +1,47 @@
+<?php
+include("config.php");
+
+$data = $_POST['data'];
+
+$lines = explode("\n", $data);
+
+foreach($lines as $line)
+{
+if(line!=''){
+list($source[],$source_p[],$destination[],$destination_p[])
+= explode(',',$line);
+}
+}//foreach loop
+for ($x = 0; $x <= count($source); $x++) {
+
+$s = $source[$x];
+$s_p = $source_p[$x];
+$d = $destination[$x];
+$d_p = $destination_p[$x];
+
+$que="SELECT * FROM visitors WHERE source_ip = '$s'";
+$query=$mysqli_conn->query($que);
+
+if($rows=$query->fetch_assoc())
+{
+
+
+}
+else if($s!=''){
+$ts = mktime();
+$ts = $ts*1000;
+    $que1 = "INSERT INTO `visitors`(`source_ip`, `source_port`, `dest_ip`, `dest_port`, `timestamp`) VALUES ('$s','$s_p','$d','$d_p','$ts');";
+$query1=$mysqli_conn->query($que1);
+if($query1)
+{echo"dumped";
+}
+
+	
+}//else (no entries)
+    
+}//main for loop 
+
+
+//echo "dumped";
+
+?>
